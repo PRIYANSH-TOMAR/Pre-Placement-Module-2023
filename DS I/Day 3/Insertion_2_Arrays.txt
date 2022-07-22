@@ -1,0 +1,33 @@
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        
+        int arr[]=new int[1001];
+        int arr1[]=new int[1001];
+        int ans[]=new int[1001];
+        
+        for(int i=0;i<nums1.length;i++)
+            arr[nums1[i]]++;
+        
+        for(int i=0;i<nums2.length;i++)
+            arr1[nums2[i]]++;
+        
+        int a=0;
+        
+        for(int i=0;i<1001;i++)
+        {
+            if(arr[i]>0&&arr1[i]>0)
+            {
+                for(int j=0;j<Math.min(arr[i],arr1[i]);j++)
+                    ans[a++]=i;
+            }
+        }
+        
+        int final_arr[]=new int[a];
+        
+        for(int i=0;i<a;i++)
+            final_arr[i]=ans[i];
+        
+        return final_arr;
+        
+    }
+}
