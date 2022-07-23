@@ -1,0 +1,37 @@
+class Solution {
+    public List<List<Integer>> generate(int lis) {
+         List<List<Integer>> List =new ArrayList<List<Integer>>();
+        List<Integer> list =new ArrayList<>();
+        
+        list.add(1);
+        List.add(list);
+        if(lis==1)
+            return List;
+        list=new ArrayList<>();
+        list.add(1);
+        list.add(1);
+        List.add(list);
+        if(lis==2)    
+            return List;
+        long num=11;
+        int len=3;
+        for(int i=2;i<lis;i++)
+        {
+            num*=11;
+            List <Integer> temp =new ArrayList<>();
+            temp=List.get(List.size()-1);
+            System.out.println(temp);
+            list=new ArrayList<>();
+            list.add(1);
+            for(int j=1;j<len-1;j++)
+            {
+                list.add(temp.get(j-1)+temp.get(j));
+            }
+            list.add(1);
+            List.add(list);
+            len++;
+        }
+        return List;
+            
+    }
+}
