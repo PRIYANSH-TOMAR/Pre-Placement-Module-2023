@@ -1,0 +1,38 @@
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+        
+        
+        String s1="";
+        String t1="";
+        int c=0;
+        
+        for(int i=s.length()-1;i>=0;i--)
+        {
+            if(s.charAt(i)=='#')
+                c++;
+            else 
+            {
+                if(c==0)
+                    s1=s.charAt(i)+s1;
+                else
+                    c--;
+            }
+        }
+        c=0;
+        for(int i=t.length()-1;i>=0;i--)
+        {
+            if(t.charAt(i)=='#')
+                c++;
+            else 
+            {
+                if(c==0)
+                    t1=t.charAt(i)+t1;
+                else
+                    c--;
+            }
+        }
+        if(s1.equals(t1))
+            return true;
+        else return false;
+    }
+}
