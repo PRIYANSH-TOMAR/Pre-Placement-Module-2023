@@ -1,0 +1,47 @@
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> list=new ArrayList<>();
+        int co[]=new int[26];
+        int tc=0;
+        
+        for(int i=0;i<p.length();i++)
+        {
+            char c=p.charAt(i);
+            int as=(int)c-'a';
+            co[as]++;
+            if(co[as]==1)
+                tc++;
+        }
+        
+       for(int i=0;i<=(s.length()-p.length());i++)
+        {
+            int cnt[]= new int [26];
+            int tmp=tc;
+            int f=0;
+            for(int j=i;j<(i+p.length());j++)
+            {
+                char c=s.charAt(j);
+                int v=(int)c-'a';
+                cnt[v]++;
+                if(cnt[v]==co[v])
+                    tmp--;
+                if(co[v]==0 && cnt[v]==1)
+                {
+                    f=j;
+                    break;
+                }
+                if(cnt[v]>co[v])
+                {
+                    f=1;
+                    break;
+                }
+            }
+            
+            if(tmp==0 && f==0)
+                list.add(i);
+           
+        }
+        
+        return list;
+    }
+}
