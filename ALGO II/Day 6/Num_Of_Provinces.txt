@@ -1,0 +1,37 @@
+class Solution {
+    //int vis[]=new int[is.length];
+    public int findCircleNum(int[][] is) {
+        int c=0;
+        //int vis[]=new int[is.length];
+        
+        for(int i=0;i<is.length;i++)
+        {
+            for(int j=0;j<is[0].length;j++)
+            {
+                if(is[i][j]==1)
+                {
+                    c++;
+                    //if(i!=j)
+                       dfs(is,i,j);
+                }
+            }
+        }
+        return c;
+    }
+    public boolean dfs(int [][] is,int i,int j)
+    {
+        for(int k=0;k<is.length;k++)
+        {
+            if(is[i][k]==1)
+            {
+               is[i][k]=2;
+               is[k][i]=2;
+                //if(vis[k]==0)
+               dfs(is,k,0);
+                //vis[k]++;
+                
+            }
+        }
+        return true;
+    }
+}
