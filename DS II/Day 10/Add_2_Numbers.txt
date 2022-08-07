@@ -1,0 +1,32 @@
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        
+        ListNode ele1=l1;
+        ListNode ele2=l2;
+        ListNode n_node=new ListNode(0);
+        ListNode head=n_node;
+        int num1=0,c=0,sum=0,crry=0;
+        while(ele1!=null||ele2!=null)
+        {
+            if(ele1!=null)
+                sum=ele1.val;
+            if(ele2!=null)
+                sum+=ele2.val;
+            sum+=crry;
+           head.next=new ListNode(sum%10);
+           crry=sum/10; 
+            head=head.next;
+            if(ele1!=null)
+            ele1=ele1.next;
+            if(ele2!=null)
+            ele2=ele2.next;
+            sum=0;
+        }
+        if(crry!=0)
+            head.next=new ListNode(crry);
+        
+        return n_node.next;
+        
+        
+    }
+}
