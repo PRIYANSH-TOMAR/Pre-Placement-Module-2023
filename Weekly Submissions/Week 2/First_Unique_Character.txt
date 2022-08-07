@@ -1,0 +1,24 @@
+class Solution {
+    public int firstUniqChar(String s) {
+        int count[]=new int[26];
+        int pos[]=new int[26];
+        
+        for(int i=0;i<s.length();i++)
+        {
+            char x=s.charAt(i);
+            int as=(int) x;
+            count[as-97]++;
+            if(count[as-97]==1)
+                pos[as-97]=i;
+        }
+        
+        for(int i=0;i<s.length();i++)
+        {
+            char x=s.charAt(i);
+            int val=(int) x;
+            if(count[val-97]==1)
+                return pos[val-97];
+        }
+        return -1;
+    }
+}
