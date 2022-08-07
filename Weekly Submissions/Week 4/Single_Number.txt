@@ -1,0 +1,28 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        int arr[]=new int[60001];
+        
+        for(int i=0;i<nums.length;i++)
+        {
+            if(nums[i]<=0)
+                nums[i]*=-1;
+            else
+                nums[i]+=30000;
+            arr[nums[i]]++;
+        }
+        
+        for(int i=0;i<60001;i++)
+        {
+            if(arr[i]==1)
+            {
+                if(i<=30000)
+                return(-1*i);
+                else
+                    return(i-30000);
+            }
+        }
+        return 0;
+        
+        
+    }
+}
