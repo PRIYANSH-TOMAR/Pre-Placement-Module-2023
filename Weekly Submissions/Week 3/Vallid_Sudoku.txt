@@ -1,0 +1,57 @@
+class Solution {
+    public boolean isValidSudoku(char[][] board) {
+        int c[][]=new int[10][10];
+        int r[]=new int[10];
+        for(int i=0;i<board.length;i++)
+        {
+            for(int j=0;j<board[0].length;j++)
+            {
+                
+                if(board[i][j]!='.')
+                {
+                    int v=(int)board[i][j]-48;
+                    c[j][v]++;
+                    r[v]++;
+                    if(r[v]>1 ||c[j][v]>1)
+                        return false;
+                }
+            }
+            r=new int[10];
+        }
+        
+        int a=0,b=0;
+        for(int i=0;i<9;i++)
+        {
+            int box[]=new int[10];
+            if(i==3 ||i==6 )
+            {
+                a+=3;
+                b=0;
+            }
+            //if(i==1 ||i==2 ||i==4 ||i==5 ||i==7 ||i==8)
+            else 
+            {
+                if(i>0){
+                b+=3;
+                }
+            }
+            for(int j=a;j<a+3;j++)
+            {
+                for(int k=b;k<b+3;k++)
+                {
+                    if(board[j][k]!='.')
+                    {
+                        int v=(int)board[j][k] -48;
+                        box[v]++;
+                        if(box[v]>1)
+                            return false;
+                        System.out.print(v);
+                    }
+                    else System.out.print(board[j][k]);
+                }
+                System.out.println();
+            }
+        }
+        return true;
+    }
+}

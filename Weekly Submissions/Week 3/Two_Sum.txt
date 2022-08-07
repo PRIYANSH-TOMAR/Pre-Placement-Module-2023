@@ -1,0 +1,46 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int copy[]=new int [nums.length];
+        int val1=0,val2=0;
+        
+        for(int i=0;i<nums.length;i++)
+            copy[i]=nums[i];
+        Arrays.sort(nums);
+        int arr[]=new int[2];
+        int low=0,mid=0,high=0,f=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            int val=target-nums[i];
+            
+      //  System.out.println(target-nums[i]);
+            low=i;high=nums.length-1;
+            
+            while(low<=high)
+            {
+                mid=(low+high)/2;
+                if(nums[mid]==val)
+                {
+                    val1=nums[i];val2=nums[mid];
+                    System.out.println(i);
+                    f=1;
+                    break;
+                }
+                
+                else if(nums[mid]<val)
+                    low=mid+1;
+                else
+                    high=mid-1;
+            }
+            if(f==1)
+                break;
+        }
+        int pos=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            if(copy[i]==val1||copy[i]==val2)
+                arr[pos++]=i;
+        }
+        
+        return arr;
+    }
+}
